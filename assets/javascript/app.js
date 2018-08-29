@@ -13,7 +13,7 @@ let countDown;
 //timeoutStorer
 let roundTime;
 init();
-randomQuestionOutput();
+//randomQuestionOutput();
 
 function init(){
   questionSets = [
@@ -45,15 +45,20 @@ function init(){
   ansCorrect = 0;
   ansIncorrect = 0;
   noAns = 0;
+  //clear Page
+  clearPage();
+  //entry screen Here
+  let startButton = $("<button>");
+  startButton.html("<h2>Start</h2>");
+  startButton.on("click",function(){
+    $("#tryAgain").empty();
+    randomQuestionOutput();
+  });
+  $("#tryAgain").append(startButton);
 }
 
 function roundSet(){
-  //empties out html
-  $("#question").html("");
-  $("#timer").html("");
-  $("#picture").html("");
-  $("#question").html("");
-  $("#answers").html("");
+  clearPage();
   roundTime = setTimeout(function(){
       timeUp();
     },30000);
@@ -122,6 +127,15 @@ function timeUp(){
   $("#picture").html("<img src="+currQues.picSrc+" />");
   $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
 }
+//resets html page.
+function clearPage(){
+  //empties out html
+  $("#question").html("");
+  $("#timer").html("");
+  $("#picture").html("");
+  $("#question").html("");
+  $("#answers").html("");
+}
 
 //will start a timeout that plays the next question after 5 seconds
 function nextQuestion(){
@@ -165,7 +179,7 @@ function randomQuestionOutput(){
       $("#tryAgain").empty();
       init();
       //for now we'll just set the game on loop, probably have to make a title screen
-      randomQuestionOutput();
+      // randomQuestionOutput();
     });
     $("#tryAgain").append(tryButton);
   }
