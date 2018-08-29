@@ -48,6 +48,12 @@ function init(){
 }
 
 function roundSet(){
+  //empties out html
+  $("#question").html("");
+  $("#timer").html("");
+  $("#picture").html("");
+  $("#question").html("");
+  $("#answers").html("");
   roundTime = setTimeout(function(){
       timeUp();
     },30000);
@@ -130,7 +136,7 @@ function nextQuestion(){
     $("#gameMessage").html("");
     //outputs a new question and resets round
     randomQuestionOutput();
-  },5000);
+  },500);
 }
 
 function randomQuestionOutput(){
@@ -152,5 +158,15 @@ function randomQuestionOutput(){
     $("#answers").html("<h2>Correct Answer: "+ansCorrect+
                         "<br>Incorrect Answer: "+ansIncorrect+
                         "<br>Unanswered: "+noAns+"</h2>");
+    //we'll make a try again button too.
+    let tryButton = $("<button>").html("<h2>Try again?</h2>");
+    tryButton.on("click",function(){
+      //deletes self and reinits the game.
+      $("#tryAgain").empty();
+      init();
+      //for now we'll just set the game on loop, probably have to make a title screen
+      randomQuestionOutput();
+    });
+    $("#tryAgain").append(tryButton);
   }
 }
