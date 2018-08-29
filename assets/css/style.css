@@ -1,7 +1,52 @@
+.cardBody {
+  /* position: absolute; */
+  /* bottom: 150px; */
+}
+.cardContent{
+  background-color: #dcc7aa;
+  position:relative;
+  border-radius: 10px;
+}
 .triviaCard {
-  background-color: green;
   margin:50px auto;
+  min-height: 600px;
 }
 button {
+  font-family: "Quicksand";
   display: block;
+  margin: 15px auto;
+  border: none;
+  background-color: #dcc7aa;
+}
+button:hover {
+  background-color: #f7882f;
+  border-radius: 10px;
+}
+h1 {
+  text-align: center;
+  font-family: "Pacifico";
+  font-size: 50px;
+  text-shadow: 2px 2px #f7c331;
+  margin: 20px auto;
+}
+
+.startButton {
+  margin: 15px auto;
+  position: relative;
+  bottom: -200px;
+}
+body {
+  background-color: #6b7a87;
+  color: #6b7a87;
+}
+#question {
+  font-family: "Quicksand";
+  text-shadow: 2px 2px #f7882f;
+}
+#timer {
+  font-family: "Quicksand";
+  color: #f7882f;
+  text-shadow: 2px 2px #6b7a87;
+  background-color: #c5b195;
+  border-radius: 10px;
 }

@@ -49,6 +49,7 @@ function init(){
   clearPage();
   //entry screen Here
   let startButton = $("<button>");
+  startButton.addClass("startButton");
   startButton.html("<h2>Start</h2>");
   startButton.on("click",function(){
     $("#tryAgain").empty();
@@ -106,7 +107,7 @@ function win(){
   ansCorrect++;
   nextQuestion();
   $("#answers").html("");
-  $("#question").html("<h2>Awwww YEEE!</h2>");
+  $("#question").html("<h2 class='text-center'>Awwww YEEE!</h2>");
   $("#picture").html("<img src="+currQues.picSrc+" />");
   $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
 }
@@ -114,16 +115,16 @@ function loss(){
   //increment wrong answer
   ansIncorrect++;
   nextQuestion();
-  $("#question").html("<h2>NOPE!</h2>");
-  $("#answers").html("<h2>The correct answer was: "+currQues.CorrAns+"</h2>");
+  $("#question").html("<h2 class='text-center'>NOPE!</h2>");
+  $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
   $("#picture").html("<img src="+currQues.picSrc+" />");
 }
 function timeUp(){
   //increment no answers
   noAns++;
   nextQuestion();
-  $("#answers").html("<h2>The correct answer was: "+currQues.CorrAns+"</h2>");
-  $("#question").html("<h2>Times Up!</h2>");
+  $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
+  $("#question").html("<h2 class='text-center'>Times Up!</h2>");
   $("#picture").html("<img src="+currQues.picSrc+" />");
   $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
 }
@@ -150,7 +151,7 @@ function nextQuestion(){
     $("#gameMessage").html("");
     //outputs a new question and resets round
     randomQuestionOutput();
-  },500);
+  },5000);
 }
 
 function randomQuestionOutput(){
@@ -168,8 +169,8 @@ function randomQuestionOutput(){
   else {
     clearInterval(countDown);
     //end screen
-    $("#question").html("<h2>Game Over!<h2>");
-    $("#answers").html("<h2>Correct Answer: "+ansCorrect+
+    $("#question").html("<h2 class='text-center'>Game Over!<h2>");
+    $("#answers").html("<h2 class='text-center'Correct Answer: "+ansCorrect+
                         "<br>Incorrect Answer: "+ansIncorrect+
                         "<br>Unanswered: "+noAns+"</h2>");
     //we'll make a try again button too.
