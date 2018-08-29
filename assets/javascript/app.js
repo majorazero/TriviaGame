@@ -170,7 +170,7 @@ function randomQuestionOutput(){
     clearInterval(countDown);
     //end screen
     $("#question").html("<h2 class='text-center'>Game Over!<h2>");
-    $("#answers").html("<h2 class='text-center'Correct Answer: "+ansCorrect+
+    $("#answers").html("<h2 class='text-center'>Correct Answer: "+ansCorrect+
                         "<br>Incorrect Answer: "+ansIncorrect+
                         "<br>Unanswered: "+noAns+"</h2>");
     //we'll make a try again button too.
