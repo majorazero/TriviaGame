@@ -1,11 +1,9 @@
-.cardBody {
-  /* position: absolute; */
-  /* bottom: 150px; */
-}
+
 .cardContent{
-  background-color: #dcc7aa;
+  background-color: rgba(220, 199, 170, 0.75);
   position:relative;
   border-radius: 10px;
+  border: 1px solid #6b7a87;
 }
 .triviaCard {
   margin:50px auto;
@@ -16,7 +14,8 @@ button {
   display: block;
   margin: 15px auto;
   border: none;
-  background-color: #dcc7aa;
+  border-radius: 10px;
+  background-color: rgba(220, 199, 170, 0.5);
 }
 button:hover {
   background-color: #f7882f;
@@ -36,10 +35,11 @@ h1 {
   bottom: -200px;
 }
 body {
-  background-color: #6b7a87;
+  background-image: url("../images/back.png");
+  background-position: top left;
   color: #6b7a87;
 }
-#question {
+#question, #gameMessage {
   font-family: "Quicksand";
   text-shadow: 2px 2px #f7882f;
 }
@@ -49,4 +49,8 @@ body {
   text-shadow: 2px 2px #6b7a87;
   background-color: #c5b195;
   border-radius: 10px;
+}
+img {
+  border-radius: 10px;
+  border: 2px solid #6b7a87;
 }
