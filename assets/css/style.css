@@ -34,6 +34,9 @@ img {
   border-radius: 10px;
   border: 1px solid #6b7a87;
 }
+.finalWin{
+  border: none;
+}
 .startButton {
   margin: 15px auto;
   position: relative;

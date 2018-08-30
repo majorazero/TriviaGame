@@ -161,7 +161,7 @@ function randomQuestionOutput(){
     let tryButton = $("<button>").html("<h2>Try again?</h2>");
     //we'll play 3 end game images
     if(ansCorrect === 4){
-      $("#picture").html("<img class='img-fluid' width='400px'height='auto'  src='assets/images/win2.gif' />");
+      $("#picture").html("<img class='img-fluid finalWin' width='400px'height='auto'  src='assets/images/win2.gif' />");
       $("#gameMessage").html("<h2>You are a super star! Nerd.</h2>");
     }
     else if (ansCorrect === 0){
