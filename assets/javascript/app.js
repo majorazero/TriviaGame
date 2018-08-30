@@ -26,25 +26,25 @@ function init(){
     {Ques: "What Pokemon League has Ash Ketchum, the one who's gonna be the very best, won?",
       CorrAns: "None, because he's the very worst.",
       Other: ["Orange League.", "Sinoh League.", "Johto League."],
-      picSrc: "assets/images/ques1.jpg",
+      picSrc: "assets/images/ques1.gif",
       comment: "Seriously, what an idiot."
     },
     {Ques: "Which of these concepts has NOT been made into a Pokemon?",
       CorrAns: "A cheese wheel.",
       Other: ["Ice cream.", "Piles of garbage.", "A regular dog."],
-      picSrc: "assets/images/ques2.png",
+      picSrc: "assets/images/ques2.gif",
       comment: "Seriously though, there is a pokemon that is literally just a Yorkshire Terrier."
     },
     {Ques: "Pokemon has aired since 1997; Ash has traveled across the world and had countless adventures since he was 10 years old. How old is he now?",
       CorrAns: "10.",
       Other: ["31.", "42.", "Eleventy-Six."],
-      picSrc: "assets/images/ques3.jpg",
+      picSrc: "assets/images/ques3.gif",
       comment: "I think Misty is 35 now."
     },
     {Ques: "Which of these Pokemon promotes childhood obesity?",
       CorrAns: "Snorlax.",
       Other: ["Pikachu.", "Cosmog.", "Klink."],
-      picSrc: "assets/images/ques4.jpg",
+      picSrc: "assets/images/ques4.gif",
       comment: "Diabetes incarnate."
     }
   ];
@@ -192,7 +192,7 @@ function win(){
   nextQuestion();
   $("#answers").html("");
   $("#question").html("<h2 class='text-center'>Awwww YEEE!</h2>");
-  $("#picture").html("<img class='img-fluid' src="+currQues.picSrc+" />");
+  $("#picture").html("<img width='400px'height='auto' class='img-fluid' src="+currQues.picSrc+" />");
   $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
   massFadeIn();
 }
