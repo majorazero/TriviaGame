@@ -16,10 +16,12 @@ button {
   border: none;
   border-radius: 10px;
   background-color: rgba(220, 199, 170, 0.5);
+  transition: background-color .75s;
 }
 button:hover {
   background-color: #f7882f;
   border-radius: 10px;
+  transition: background-color .75s;
 }
 h1 {
   text-align: center;
@@ -32,7 +34,6 @@ h1 {
 .startButton {
   margin: 15px auto;
   position: relative;
-  bottom: -200px;
 }
 body {
   background-image: url("../images/back.png");

@@ -16,6 +16,8 @@ init();
 //randomQuestionOutput();
 
 function init(){
+  massHide();
+  $("#title").hide();
   questionSets = [
     {Ques: "What Pokemon League has Ash Ketchum, the one who's gonna be the very best, won?",
       CorrAns: "None, because he's the very worst.",
@@ -47,6 +49,7 @@ function init(){
   noAns = 0;
   //clear Page
   clearPage();
+  $("#picture").html("<img class='img-fluid' width='400px'height='auto' src='assets/images/title.gif' />")
   //entry screen Here
   let startButton = $("<button>");
   startButton.addClass("startButton");
@@ -56,10 +59,14 @@ function init(){
     randomQuestionOutput();
   });
   $("#tryAgain").append(startButton);
+  massFadeIn();
+  $("#title").fadeIn();
 }
 
 function roundSet(){
   clearPage();
+  //everything should be invisible
+  massHide();
   roundTime = setTimeout(function(){
       timeUp();
     },30000);
@@ -99,43 +106,55 @@ function roundSet(){
     }
     $("#answers").append(ansButton);
   }
-  console.log(currQues.Ques,quesChoice);
+  //everything should fade back in.
+  massFadeIn();
 }
 
 function win(){
+  massHide();
   //increment correct answer
   ansCorrect++;
   nextQuestion();
   $("#answers").html("");
   $("#question").html("<h2 class='text-center'>Awwww YEEE!</h2>");
-  $("#picture").html("<img src="+currQues.picSrc+" />");
+  $("#picture").html("<img class='img-fluid' src="+currQues.picSrc+" />");
   $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
+  massFadeIn();
 }
 function loss(){
+  massHide();
   //increment wrong answer
   ansIncorrect++;
   nextQuestion();
   $("#question").html("<h2 class='text-center'>NOPE!</h2>");
   $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
-  $("#picture").html("<img src="+currQues.picSrc+" />");
+  $("#picture").html("<img class='img-fluid'  width='400px'height='auto'src='assets/images/wrong.gif' />");
+  $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
+  massFadeIn();
 }
 function timeUp(){
+//massFadeOut();
+  massHide();
   //increment no answers
   noAns++;
   nextQuestion();
   $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
   $("#question").html("<h2 class='text-center'>Times Up!</h2>");
-  $("#picture").html("<img src="+currQues.picSrc+" />");
+  $("#picture").html("<img class='img-fluid'  width='400px'height='auto' src='assets/images/timeup.gif' />");
   $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
+  massFadeIn();
 }
 //resets html page.
 function clearPage(){
-  //empties out html
-  $("#question").html("");
-  $("#timer").html("");
-  $("#picture").html("");
-  $("#question").html("");
-  $("#answers").html("");
+  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").html("");
+}
+
+function massFadeIn(){
+  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").fadeIn();
+}
+
+function massHide(){
+  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").hide();
 }
 
 //will start a timeout that plays the next question after 5 seconds
@@ -175,6 +194,19 @@ function randomQuestionOutput(){
                         "<br>Unanswered: "+noAns+"</h2>");
     //we'll make a try again button too.
     let tryButton = $("<button>").html("<h2>Try again?</h2>");
+    //we'll play 3 end game images
+    if(ansCorrect === 4){
+      $("#picture").html("<img class='img-fluid' width='400px'height='auto'  src='assets/images/win2.gif' />");
+      $("#gameMessage").html("<h2>You are a super star! Nerd.</h2>");
+    }
+    else if (ansCorrect === 0){
+      $("#picture").html("<img class='img-fluid' width='400px'height='auto'  src='assets/images/win1.gif' />");
+      $("#gameMessage").html("<h2>That was terrible.</h2>");
+    }
+    else{
+      $("#picture").html("<img class='img-fluid' width='400px'height='auto'  src='assets/images/win3.gif' />");
+      $("#gameMessage").html("<h2>So close... but no cigar.</h2>");
+    }
     tryButton.on("click",function(){
       //deletes self and reinits the game.
       $("#tryAgain").empty();
