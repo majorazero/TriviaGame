@@ -1,13 +1,7 @@
-
-.cardContent{
-  background-color: rgba(220, 199, 170, 0.75);
-  position:relative;
-  border-radius: 10px;
-  border: 1px solid #6b7a87;
-}
-.triviaCard {
-  margin:50px auto;
-  min-height: 600px;
+body {
+  background-image: url("../images/back.png");
+  background-position: top left;
+  color: #6b7a87;
 }
 button {
   font-family: "Quicksand";
@@ -30,15 +24,23 @@ h1 {
   text-shadow: 2px 2px #f7c331;
   margin: 20px auto;
 }
-
+img {
+  border-radius: 10px;
+  border: 2px solid #6b7a87;
+}
+.cardContent{
+  background-color: rgba(220, 199, 170, 0.75);
+  position:relative;
+  border-radius: 10px;
+  border: 1px solid #6b7a87;
+}
 .startButton {
   margin: 15px auto;
   position: relative;
 }
-body {
-  background-image: url("../images/back.png");
-  background-position: top left;
-  color: #6b7a87;
+.triviaCard {
+  margin:50px auto;
+  min-height: 600px;
 }
 #question, #gameMessage {
   font-family: "Quicksand";
@@ -50,8 +52,4 @@ body {
   text-shadow: 2px 2px #6b7a87;
   background-color: #c5b195;
   border-radius: 10px;
-}
-img {
-  border-radius: 10px;
-  border: 2px solid #6b7a87;
 }

@@ -1,20 +1,24 @@
+///////////////////////////////////////////////////////
+//Global Variables
+///////////////////////////////////////////////////////
 let questionSets;
-//we'll output a random question.
-let currQues;
-//we'll set an array of the possible OTHER answers
-let quesChoice;
-//insert the correct Answer somewhere (random) and saves the correct answer index
+let currQues;  //we'll output a random question.
+let quesChoice; //we'll set an array of the possible OTHER answers
 let corrAnsIndex;
 let ansCorrect;
 let ansIncorrect;
 let noAns;
-//interval storer
-let countDown;
-//timeoutStorer
-let roundTime;
+let countDown; //interval storer
+let roundTime; //timeoutStorer
 init();
-//randomQuestionOutput();
-
+///////////////////////////////////////////////////////
+//Functions
+///////////////////////////////////////////////////////
+/**
+* This functions both as an initilization point and reset button,
+* it will reset question sets, the score, clear all previous html content
+* and will basically set the entry page with a Start button.
+*/
 function init(){
   massHide();
   $("#title").hide();
@@ -62,7 +66,10 @@ function init(){
   massFadeIn();
   $("#title").fadeIn();
 }
-
+/**
+* This sets page per new question, will give each choice an appopriate
+* button with their respective click functionalities
+*/
 function roundSet(){
   clearPage();
   //everything should be invisible
@@ -109,55 +116,10 @@ function roundSet(){
   //everything should fade back in.
   massFadeIn();
 }
-
-function win(){
-  massHide();
-  //increment correct answer
-  ansCorrect++;
-  nextQuestion();
-  $("#answers").html("");
-  $("#question").html("<h2 class='text-center'>Awwww YEEE!</h2>");
-  $("#picture").html("<img class='img-fluid' src="+currQues.picSrc+" />");
-  $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
-  massFadeIn();
-}
-function loss(){
-  massHide();
-  //increment wrong answer
-  ansIncorrect++;
-  nextQuestion();
-  $("#question").html("<h2 class='text-center'>NOPE!</h2>");
-  $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
-  $("#picture").html("<img class='img-fluid'  width='400px'height='auto'src='assets/images/wrong.gif' />");
-  $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
-  massFadeIn();
-}
-function timeUp(){
-//massFadeOut();
-  massHide();
-  //increment no answers
-  noAns++;
-  nextQuestion();
-  $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
-  $("#question").html("<h2 class='text-center'>Times Up!</h2>");
-  $("#picture").html("<img class='img-fluid'  width='400px'height='auto' src='assets/images/timeup.gif' />");
-  $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
-  massFadeIn();
-}
-//resets html page.
-function clearPage(){
-  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").html("");
-}
-
-function massFadeIn(){
-  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").fadeIn();
-}
-
-function massHide(){
-  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").hide();
-}
-
-//will start a timeout that plays the next question after 5 seconds
+/**
+* It's a mini reset function for between rounds, and then sets
+* an invisible countdown to pump out the next question
+*/
 function nextQuestion(){
   //we'll start by clearing all the previous timers
   clearInterval(countDown);
@@ -172,7 +134,10 @@ function nextQuestion(){
     randomQuestionOutput();
   },5000);
 }
-
+/**
+* This will take out a random question object out of the array of questions
+* if questions run out, it will run the game end screen.
+*/
 function randomQuestionOutput(){
   //if there are still questions left
   if(questionSets.length != 0){
@@ -216,4 +181,64 @@ function randomQuestionOutput(){
     });
     $("#tryAgain").append(tryButton);
   }
+}
+/**
+* This sets the screen for when you answer a question correctly
+*/
+function win(){
+  massHide();
+  //increment correct answer
+  ansCorrect++;
+  nextQuestion();
+  $("#answers").html("");
+  $("#question").html("<h2 class='text-center'>Awwww YEEE!</h2>");
+  $("#picture").html("<img class='img-fluid' src="+currQues.picSrc+" />");
+  $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
+  massFadeIn();
+}
+/**
+* This sets the screen for when you answer a question incorrectly
+*/
+function loss(){
+  massHide();
+  //increment wrong answer
+  ansIncorrect++;
+  nextQuestion();
+  $("#question").html("<h2 class='text-center'>NOPE!</h2>");
+  $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
+  $("#picture").html("<img class='img-fluid'  width='400px'height='auto'src='assets/images/wrong.gif' />");
+  $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
+  massFadeIn();
+}
+/**
+* This sets the screen for when you didn't answer the question in time
+*/
+function timeUp(){
+  massHide();
+  //increment no answers
+  noAns++;
+  nextQuestion();
+  $("#answers").html("<h2 class='text-center'>The correct answer was: "+currQues.CorrAns+"</h2>");
+  $("#question").html("<h2 class='text-center'>Times Up!</h2>");
+  $("#picture").html("<img class='img-fluid'  width='400px'height='auto' src='assets/images/timeup.gif' />");
+  $("#gameMessage").html("<h2>"+currQues.comment+"</h2>");
+  massFadeIn();
+}
+/**
+* This will clear the page.
+*/
+function clearPage(){
+  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").html("");
+}
+/**
+* This will fade all the content in.
+*/
+function massFadeIn(){
+  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").fadeIn();
+}
+/**
+* This will set all the display in the objects to none. It's needed for the fade in to work properly.
+*/
+function massHide(){
+  $("#question, #timer, #picture, #question, #answers, #gameMessage, #tryAgain").hide();
 }
